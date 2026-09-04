@@ -472,7 +472,7 @@
                     <div class="badge-card">          
                         <div class="badge-photo">
                             <div class="badge-avatar">
-                               <img src="/Proyectos/Portafolio/img/perfil.png"  alt="Foto de Perfil">
+                               <img src="Portafolio_Alvarez/img/perfil.png"  alt="Foto de Perfil">
                             </div>
                         </div>          
                         <div class="badge-name">Ana V. Alvarez Y.</div>          

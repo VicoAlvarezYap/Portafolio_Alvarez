@@ -416,7 +416,7 @@ if (!isset($esAdmin)) {
                     <div class="cursos-container">
                          <div class="cou-card">
                             <div class="cou-img">
-                                <img src="/Proyectos/Portafolio/img/images.png" alt="1000 Programadores Salteños" class="co-img">
+                                <img src="/img/images.png" alt="1000 Programadores Salteños" class="co-img">
                             </div>
                             <div class="cou-info">
                                 <h3 class="cou-titulo"> Programación Web Full Stack</h3>
@@ -428,7 +428,7 @@ if (!isset($esAdmin)) {
                         </div>
                          <div class="cou-card">
                             <div class="cou-img">
-                                <img src="/Proyectos/Portafolio/img/java.jpg" alt="1000 Programadores Salteños" class="co-img">
+                                <img src="/img/java.jpg" alt="1000 Programadores Salteños" class="co-img">
                             </div>
                             <div class="cou-info">
                                 <h3 class="cou-titulo"> Introduccion a la Programación en Java</h3>
@@ -440,7 +440,7 @@ if (!isset($esAdmin)) {
                         </div>
                          <div class="cou-card">
                             <div class="cou-img">
-                                <img src="/Proyectos/Portafolio/img/ministerio.jpeg" alt="1000 Programadores Salteños" class="co-img">
+                                <img src="/img/ministerio.jpeg" alt="1000 Programadores Salteños" class="co-img">
                             </div>
                             <div class="cou-info">
                                 <h3 class="cou-titulo"> Operador Informatico para Administración y gestión</h3>
@@ -452,7 +452,7 @@ if (!isset($esAdmin)) {
                         </div>
                         <div class="cou-card">
                             <div class="cou-img">
-                                <img src="/Proyectos/Portafolio/img/1657553541685.jpg" alt="1000 Programadores Salteños" class="co-img">
+                                <img src="/img/1657553541685.jpg" alt="1000 Programadores Salteños" class="co-img">
                             </div>
                             <div class="cou-info">
                                 <h3 class="cou-titulo"> Introduccion a la Programacion en Python</h3>

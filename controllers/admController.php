@@ -6,14 +6,31 @@ class admController {
     private $userModel;
 
     public function __construct() {
-        global $conexion;
-        $this->userModel = new user($conexion);
-        
-        
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+    global $pdo;
+    $this->userModel = new user($pdo);
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
+}
+
+public function authenticate() {
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+
+    $usuario = $this->userModel->getByUsername($username);
+
+    if ($usuario && $password === $usuario['password']) {
+        $_SESSION['admin_logged'] = true;
+        $_SESSION['admin_id'] = $usuario['id'];
+        $_SESSION['admin_username'] = $usuario['username'];
+        header("Location: index.php?action=index");
+        exit;
+    } else {
+        $_SESSION['error'] = "Usuario o contraseña incorrectos.";
+        header("Location: index.php?action=login");
+        exit;
+    }
+}
 
  
     public function login() {
@@ -26,34 +43,6 @@ class admController {
         require __DIR__ . "/../views/auth/login.php";
     }
 
-    // procesa el envio de credencial (verificar)
-    public function authenticate() {
-        $username = trim($_POST['username'] ?? '');
-        $password = trim($_POST['password'] ?? '');
-
-        if (empty($username) || empty($password)) {
-            $_SESSION['error'] = "Por favor completa todos los campos.";
-            header("Location: index.php?action=login");
-            exit;
-        }
-
-       
-        $usuario = $this->userModel->getByUsername($username);
-
-        // valida 
-        if ($usuario && password_verify($password, $usuario['password'])) {
-            $_SESSION['admin_logged'] = true;
-            $_SESSION['admin_id'] = $usuario['id'];
-            $_SESSION['admin_username'] = $usuario['username'];
-
-            header("Location: index.php?action=index");
-            exit;
-        } else {
-            $_SESSION['error'] = "Usuario o contraseña incorrectos.";
-            header("Location: index.php?action=login");
-            exit;
-        }
-    }
 
     // Cierra la sesión
     public function logout() {

@@ -31,10 +31,12 @@ switch ($action) {
         break;
 
     case 'login_post':
-        require_once __DIR__ . '/../adm/login_post.php';
+        require_once __DIR__ . '/../../controllers/admController.php';
+        $controller = new admController();
+        $controller->authenticate();
         break;
 
-    case 'logout':
+    case 'logout': //Cierra sesion
         session_unset();
         session_destroy();
         header('Location: index.php?action=inicio');
