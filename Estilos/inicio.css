@@ -1,0 +1,264 @@
+
+:root {
+    --bg: #ffffff;
+    --surface: #efeaea;
+    --surface-2: #d5d5d5;
+    --line: #e7e9f0;
+    --text: #12141c;
+    --muted: #6b7280;
+    --muted-2: #9aa0b0;
+    --accent-a: #7c6cf6;
+    --accent-b: #3ba7ff;
+    --accent-grad: linear-gradient(120deg, var(--accent-a), var(--accent-b));
+    --good: #22c55e;
+    --dot: #d8dbe6;
+
+    --bg-gradient: rgb(243, 245, 249);
+    --nav-bg-glass: rgba(255, 255, 255, 0.65);
+    --nav-border-glass: rgba(255, 255, 255, 0.9);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+    --link-color: #4a4a4a;
+    --link-hover: #010101;
+}
+
+* { 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-gradient);
+    background-image: radial-gradient(var(--dot) 1.4px, transparent 1.4px);
+    background-size: 24px 24px;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+.wrap { 
+    max-width: 1180px; 
+    margin: 0 auto; 
+    padding: 0 32px; 
+}
+
+
+.navbar {
+    position: sticky;
+    top: 0px;
+    margin: 20px auto 0;
+    max-width: 1180px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 70px;
+    z-index: 1000;
+    
+    background: var(--nav-bg-glass);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid var(--nav-border-glass);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    
+    transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--link-color);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--link-hover);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-right { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.theme-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--nav-border-glass);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+    background: rgba(128, 128, 128, 0.2);
+    transform: scale(1.05);
+}
+
+
+.hamburger-btn { /*boton hamburguesa*/
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-btn .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger-btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.login-link, .admin-link {
+    font-weight: 600 !important;
+}
+
+.main-glass-container {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    padding: 40px;
+    border-radius: 24px;
+    background: var(--nav-bg-glass);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid var(--nav-border-glass);
+    box-shadow: 25px 50px 80px -15px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+/*flexibiloidad para otras pantallas*/
+@media (max-width: 900px) {
+    .navbar {
+        position: relative;
+        padding: 0 16px;
+        display: grid;
+        grid-template-columns: 40px 1fr 40px;
+        align-items: center;
+        text-align: center;
+        z-index: 9999 !important;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        justify-self: start;
+    }
+
+    .navbar-brand {
+        grid-column: 2;
+        justify-self: center;
+    }
+
+    .brand-name {
+        font-size: 1.05rem;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+        display: block;
+    }
+
+    .navbar-right {
+        justify-self: end;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid var(--nav-border-glass);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        border-radius: 16px;
+        padding: 20px 0;
+        z-index: 10000 !important;
+    }
+
+    body.dark-mode .nav-menu {
+        background: rgba(15, 23, 42, 0.96);
+    }
+
+    .nav-menu.active {
+        display: block !important;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.05rem;
+        padding: 10px 0;
+        display: block;
+        color: var(--text) !important;
+    }
+
+    .main-glass-container { 
+        padding: 20px; 
+        margin-top: 20px; 
+    }
+}

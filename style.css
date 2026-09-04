@@ -1,0 +1,125 @@
+/* Variables para el Modo Claro */
+:root {
+    /* Fondo con gradiente colorido para que el vidrio destaque */
+    --bg-gradient: rgb(243, 245, 249);
+    
+    /* Configuración del vidrio claro */
+    --nav-bg-glass: rgb(255, 253, 253);
+    --nav-border-glass: rgba(255, 255, 255, 0.964);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+    
+    --text-color: #1a1a1a;
+    --link-color: #4a4a4a;
+    --link-hover: #010101;
+}
+
+/* Variables para el Modo Oscuro */
+body.dark-mode {
+    /* Fondo con gradiente oscuro y profundo */
+    --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    
+    /* Configuración del vidrio oscuro */
+    --nav-bg-glass: rgba(16, 18, 27, 0.4);
+    --nav-border-glass: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.3);
+    
+    --text-color: #ffffff;
+    --link-color: #b3b3b3;
+    --link-hover: #f9eef9;
+}
+
+/* Cuerpo de la página */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    
+    /* min-height alto para poder hacer scroll y ver el efecto del vidrio */
+    min-height: 200vh; 
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* La Navbar estilo Vidrio Flotante */
+.navbar {
+    position: sticky; /* Hace que la barra baje al hacer scroll */
+    top: 20px; /* Separación del techo */
+    margin: 0 20px; /* Separación de los laterales */
+    border-radius: 16px; /* Bordes redondeados del cristal */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 70px;
+    z-index: 1000;
+    
+    /* --- EL EFECTO GLASSMORPHISM --- */
+    background: var(--nav-bg-glass);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%); /* Soporte para Safari */
+    border: 1px solid var(--nav-border-glass);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    
+    transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Agrupación del Logo y los Links */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Estilo del Nombre/Logo */
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+}
+
+/* Lista de navegación */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--link-color);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--link-hover);
+    /* Ligero resplandor al pasar el ratón */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Botón de tema */
+.theme-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--nav-border-glass);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
